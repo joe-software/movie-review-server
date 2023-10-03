@@ -1,0 +1,29 @@
+    <!-- this is a test site to run requests to the API -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test page</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- this is  -->
+	<script>
+        const requestOptions = {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ title: 'Fetch PUT Request Example', body: 'test stuff' })
+};
+
+        fetch('http://localhost:3000', requestOptions)
+        .then(data => {
+            json.data()
+        })
+        .then(res => {
+            console.log(res)
+        })
+    </script>
+  </body>
+</html>
