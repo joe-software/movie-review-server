@@ -1,4 +1,4 @@
-    <!-- this is a test site to run requests to the API -->
+    <!-- this is a test site to run requests to server.js -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <!-- this is  -->
+    <!-- this is a test request to server.js-->
 	<script>
         const requestOptions = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title: 'Fetch PUT Request Example', body: 'test stuff' })
+    body: JSON.stringify({ name: 'tim', food: 'pizza' })
 };
 
         fetch('http://localhost:3000', requestOptions)
