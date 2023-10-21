@@ -4,7 +4,7 @@
  // Import required packages
  const express = require('express')
  const cors = require('cors')
- const PORT = process.env.PORT || 3000
+ const PORT = process.env.PORT || 3500
  const { MongoClient, ServerApiVersion } = require('mongodb');
 
  // Connect DB
@@ -41,14 +41,39 @@
 
  //test responses
 
- app.put('/', async (req, res) => {
+//  app.put('/', async (req, res) => {
+//     //test to check read/write functionality to Mongo DB
+//     await client.connect();
+//     console.log('successful call')
+//     const myDB = client.db('movie-review')
+//     const dbCollection = myDB.collection('first collection')
+//     const testDoc = {name: req.body['name'], food: req.body['food']}
+//     await dbCollection.insertOne(testDoc)
+//     const read = dbCollection.find({})
+//     for await (const doc of read){
+//         console.log(doc)
+//     }
+//     await client.close();
+    
+  // })
+ // API call to POST review information to db
+  app.post('/post-review', async (req, res) => {
     //test to check read/write functionality to Mongo DB
     await client.connect();
     console.log('successful call')
     const myDB = client.db('movie-review')
     const dbCollection = myDB.collection('first collection')
-    const testDoc = {name: req.body['name'], food: req.body['food']}
-    await dbCollection.insertOne(testDoc)
+    await dbCollection.insertOne(req.body)
+    await client.close();
+    
+  })
+
+  app.get('/get-reviews', async (req, res) => {
+    //test to check read/write functionality to Mongo DB
+    await client.connect();
+    console.log('successful call')
+    const myDB = client.db('movie-review')
+    const dbCollection = myDB.collection('first collection')
     const read = dbCollection.find({})
     for await (const doc of read){
         console.log(doc)
@@ -56,6 +81,8 @@
     await client.close();
     
   })
+
+ 
 
 
 
