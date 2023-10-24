@@ -1,4 +1,4 @@
-  //configure env variables
+//configure env variables
   require('dotenv').config()
  
  // Import required packages
@@ -23,15 +23,13 @@
      await client.connect();
      // Send a ping to confirm a successful connection
      await client.db("admin").command({ ping: 1 });
-     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+     console.log("Pinged your deployment. You successffully connected to MongoDB!");
    } finally {
      // Ensures that the client will close when you finish/error
      await client.close();
    }
  }
  run().catch(console.dir);
-
-
 
  // Create Express server
  const app = express();
@@ -41,9 +39,7 @@
 
  // API call to POST review information to db
   app.post('/post-review', async (req, res) => {
-    //test to check read/write functionality to Mongo DB
     await client.connect();
-    console.log('successful call')
     const myDB = client.db('movie-review')
     const dbCollection = myDB.collection('first collection')
     await dbCollection.insertOne(req.body)
@@ -52,9 +48,7 @@
   })
 
   app.get('/get-reviews', async (req, res) => {
-    //test to check read/write functionality to Mongo DB
     await client.connect();
-    console.log('successful call')
     let results = []
     const myDB = client.db('movie-review')
     const dbCollection = myDB.collection('first collection')
@@ -63,14 +57,8 @@
         results.push(doc)
     }
     res.json(results)
-    await client.close();
-    
+    await client.close();    
   })
-
- 
-
-
-
 
  // Set listener
  app.listen(PORT, () => {
