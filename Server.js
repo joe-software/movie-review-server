@@ -20,6 +20,7 @@
  async function run() {
    try {
     console.log('connecting')
+    console.log(process.env.TESTING)
      // Connect the client to the server	(optional starting in v4.7)
      await client.connect();
      // Send a ping to confirm a successful connection
